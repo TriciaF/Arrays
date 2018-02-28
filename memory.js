@@ -8,19 +8,22 @@ class Memory {
 	}
 
 	allocate(size) {
+		console.log('Enter allocate');
 		if (this.head + size > this.memory.length) {
 			return null;
 		}
-
+		console.log('current head =', this.head);
 		let start = this.head;
-
+		console.log('start =', start);
 		this.head += size;
+		console.log('new head =', this.head);
 		return start;
 	}
 
 	free(ptr) {}
 
 	copy(toIdx, fromIdx, size) {
+		console.log('toIdx = ', toIdx, 'fromIdx = ', fromIdx);
 		if (fromIdx === toIdx) {
 			return;
 		}
@@ -28,6 +31,7 @@ class Memory {
 		if (fromIdx > toIdx) {
 			// Iterate forwards
 			for (let i = 0; i < size; i++) {
+				console.log('toIdx + i = ', toIdx + i, 'fromIdx + i = ', fromIdx + i);
 				this.set(toIdx + i, this.get(fromIdx + i));
 			}
 		} else {
